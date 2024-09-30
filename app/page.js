@@ -53,7 +53,7 @@ export default function Home() {
         {
           name: "Yash Chaudhari",
           role: "The Mastermind",
-          image: "/y2.png",
+          image: "/Yash.png",
           socials: {
             linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
             github: "https://github.com/Yashchaudhari29/",
