@@ -246,12 +246,15 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
       @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
     `}</style>
     
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
-            >
-              {darkMode ? "🌞" : "🌙"}
-            </button>
+          <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+      >
+        <span style={{ fontSize: '1.5rem' }}>
+          {darkMode ? "🌞" : "🌙"}
+        </span>
+      </button>
+
           </div>
         )}
       </div>
