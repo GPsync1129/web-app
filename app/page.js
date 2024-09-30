@@ -44,7 +44,7 @@ export default function Home() {
         {
           name: "Om Chaudhari",
           role: "Django Developer",
-          image: "/cr2.png",
+          image: "/om.webp",
           socials: {
             linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
             github: "https://github.com/omchaudhari1107",
@@ -53,7 +53,7 @@ export default function Home() {
         {
           name: "Yash Chaudhari",
           role: "The Mastermind",
-          image: "/cr2.png",
+          image: "/y2.png",
           socials: {
             linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
             github: "https://github.com/Yashchaudhari29/",
@@ -202,7 +202,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
     >
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <a href="#" className="font-bold text-xl">
-          Google Photos Sync
+          Google Photos Download
         </a>
         {isMobile ? (
           <div className="flex items-center">
@@ -269,15 +269,15 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           <a href="#feedback" className="block px-6 py-2">
             Feedback
           </a>
-          <a href="#donate" className="block px-6 py-2">
+          <a href="https://www.buymeacoffee.com/" className="block px-6 py-2">
             Support
           </a>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="block w-full text-left px-6 py-2"
-          >
-            {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          </button>
+        <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+            >
+              {darkMode ? "🌞" : "🌙"}
+            </button>
         </div>
       )}
     </nav>
@@ -407,14 +407,17 @@ function InstructionSection({ darkMode }) {
             <h3 className="text-xl font-semibold mb-4">Ubuntu Installation</h3>
             <ol className="space-y-3 text-sm md:text-base">
               <li>1. First of all Log into your Google account and Google Photos via Firefox.</li>
-              <li>2. After acquiring the GPsync.deb file, execute this command:
+              <li>2. After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
                 <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
               </li>
-              <li>3. Launch the application with:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>/usr/local/bin/gpsync</code></pre>
+              <li>3. Launch the application on terminal(ctrl+alt+t) with:
+                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
               </li>
               <li>4. Allow GPsync to orchestrate your synchronization seamlessly.</li>
-              <li>5. For a detailed walkthrough, our video guide awaits:
+              <li>5. To uninstall application, type command:
+              <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
+              </li>
+              <li>6. For a detailed walkthrough, our video guide awaits:
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
                   🎥 Watch Ubuntu Tutorial
                 </a>
