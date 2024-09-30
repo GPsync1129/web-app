@@ -1,0 +1,761 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+import Confetti from "react-confetti";
+import { Star } from "lucide-react";
+
+export default function Home() {
+  const [selectedOS, setSelectedOS] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const testimonials = [
+    { name: "John Doe", text: "This software is amazing!" },
+    { name: "Jane Smith", text: "Incredibly easy to use." },
+    { name: "Bob Johnson", text: "Game-changing for my workflow." },
+    { name: "Johnson", text: "Game-changing for my workflow." },
+    { name: "Bob Doe", text: "Game-changing for my workflow." },
+  ];
+
+  const creators = [
+    {
+      name: "Om Chaudhari",
+      role: "Django Developer",
+      image: "/cr2.png",
+      socials: {
+        linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+        github: "https://github.com/omchaudhari1107",
+      },
+    },
+    {
+      name: "Yash Chaudhari",
+      role: "The Mastermind",
+      image: "/cr2.png",
+      socials: {
+        linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
+        github: "https://github.com/Yashchaudhari29/",
+      },
+    },
+    {
+      name: "Shreekant Sureliya",
+      role: "Software Developer",
+      image: "/cr2.png",
+      socials: {
+        linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+        github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+      },
+    },
+  ];
+
+  const handleDownload = (os) => {
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 5000);
+    console.log(`Downloading for ${os}`);
+  };
+
+  return (
+    <div
+      className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+        } transition-colors duration-300`}
+    >
+      <Head>
+        <title>Software Download Center</title>
+        <meta
+          name="description"
+          content="Download software for Windows and Linux"
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+
+      {showConfetti && <Confetti />}
+
+      <Navbar
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        isMobile={isMobile}
+      />
+
+      <main className="mx-auto px-4 py-20">
+        <div className="flex flex-col lg:flex-row justify-between">
+          {!isMobile && (
+            <aside className="lg:w-1/6 mb-4 lg:mb-0">
+              <AdSection />
+            </aside>
+          )}
+
+          <motion.div
+            className={`${isMobile ? "w-full" : "lg:w-2/3"}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1
+              className="text-3xl md:text-5xl font-bold text-center font-playfair bg-clip-text text-transparent bg-gradient-to-r from-white to-[#f0f0f0]"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            >
+              <div className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'}`} >
+                <Typewriter
+                  words={["Capture Moments, Secure Memories"]}
+                  loop={1}
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                />
+              </div>
+            </motion.h1>
+            {/* <motion.h2
+              className="text-xl md:text-2xl text-center mb-8 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              Capture Moments, Secure Memories
+            </motion.h2> */}
+
+            <DownloadSection
+              handleDownload={handleDownload}
+              darkMode={darkMode}
+              isMobile={isMobile}
+            />
+
+            <InstructionSection darkMode={darkMode} />
+
+            <CreatorsSection
+              creators={creators}
+              darkMode={darkMode}
+              isMobile={isMobile}
+            />
+
+            <TestimonialSection
+              testimonials={testimonials}
+              currentTestimonial={currentTestimonial}
+              darkMode={darkMode}
+            />
+
+            <FeedbackForm darkMode={darkMode} />
+
+            {/* <BuyMeCoffeeSection darkMode={darkMode} /> */}
+          </motion.div>
+
+          {!isMobile && (
+            <aside className="lg:w-1/6 mt-8 lg:mt-0">
+              <AdSection />
+            </aside>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+
+//Navbar
+
+function Navbar({ darkMode, setDarkMode, isMobile }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <nav
+      className={`fixed w-full top-0 z-50 ${darkMode ? "bg-gray-800" : "bg-white"
+        } shadow-md`}
+    >
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" className="font-bold text-xl">
+          Google Photos Sync
+        </a>
+        {isMobile ? (
+          <div className="flex items-center">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-3xl focus:outline-none"
+            >
+              ☰
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <a href="#" className="mx-3">
+              Home
+            </a>
+            <a href="#guide" className="mx-3">
+              Guide
+            </a>
+            <a href="#ourcreator" className="mx-3">
+              Creators
+            </a>
+            <a href="#testimonials" className="mx-3">
+              Testimonials
+            </a>
+            <a href="#feedback" className="mx-3">
+              Feedback
+            </a>
+            <a 
+          className="bmc-button inline-flex items-center px-3 py-2 border rounded text-white bg-[#FF813F] border-[#FF813F] hover:bg-[#ff9b66] hover:border-[#ff9b66] transition-colors duration-200 ease-in-out" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          href="https://www.buymeacoffee.com/">
+          <img 
+            src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" 
+            alt="Buy me a coffee" 
+            className="w-6 h-6 mr-2"
+          />
+          <span className="font-['Cookie',_cursive] text-lg">Buy me a coffee</span>
+        </a>
+    <style jsx>{`
+      @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+    `}</style>
+    
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+            >
+              {darkMode ? "🌞" : "🌙"}
+            </button>
+          </div>
+        )}
+      </div>
+      {isMobile && menuOpen && (
+        <div className={`${darkMode ? "bg-gray-800" : "bg-white"} py-2`}>
+          <a href="#" className="block px-6 py-2">
+            Home
+          </a>
+          <a href="#ourcreator" className="block px-6 py-2">
+            Creators
+          </a>
+          <a href="#testimonials" className="block px-6 py-2">
+            Testimonials
+          </a>
+          <a href="#feedback" className="block px-6 py-2">
+            Feedback
+          </a>
+          <a href="#donate" className="block px-6 py-2">
+            Support
+          </a>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="block w-full text-left px-6 py-2"
+          >
+            {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          </button>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+// Download Section 
+
+
+function DownloadSection({ handleDownload, darkMode, isMobile }) {
+  return (
+    <div
+      className={`flex ${isMobile ? "flex-col" : "flex-row"
+        } justify-center items-center gap-16 md:gap-8 mt-16`}
+    >
+      {/* Windows Section */}
+      <div className="flex flex-col items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={isMobile ? 90 : 120}
+          height={isMobile ? 90 : 100}
+          fill="#00A3EE"
+          className="mb-4 md:mb-10"
+          viewBox="0 0 16 16"
+        >
+          <path d="M6.555 1.375 0 2.237v5.45h6.555zM0 13.795l6.555.933V8.313H0zm7.278-5.4.026 6.378L16 16V8.395zM16 0 7.33 1.244v6.414H16z" />
+        </svg>
+
+        <motion.button
+          className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg w-full md:w-64 ${darkMode ? "bg-blue-600" : "bg-blue-500"
+            } text-white font-semibold transition-colors duration-300`}
+          onClick={() => handleDownload("windows")}
+        >
+          <div className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+
+            <span className="text-lg ml-3">for Windows (.exe)</span>
+          </div>
+          {/* <span className="text-xs md:text-sm">Windows 10, 11</span> */}
+        </motion.button>
+      </div>
+
+      {/* Linux Section */}
+      <div className="flex flex-col items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={isMobile ? 90 : 120}
+          height={isMobile ? 90 : 100}
+          fill="#E95420"
+          className="mb-4 md:mb-10"
+          viewBox="0 0 16 16"
+        >
+          <path d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546M7.4 13.108a5.54 5.54 0 0 1-3.775-2.88 3.27 3.27 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.25 3.25 0 0 1-.666-1.9 6 6 0 0 1-.557-.091m3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546m3.163-3.108a7.44 7.44 0 0 0 .373-8.726 3.3 3.3 0 0 1-1.278 1.498 5.57 5.57 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693M2.098 3.998a3.3 3.3 0 0 1 1.897.486 5.54 5.54 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.47 7.47 0 0 0-7.051 3.745" />
+        </svg>
+
+        <div
+          className={`flex ${isMobile ? "flex-col" : "flex-row"
+            } space-y-4 md:space-y-0 md:space-x-4`}
+        >
+          {/* Linux .deb Button */}
+          <motion.button
+            className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg w-full md:w-64 ${darkMode ? "bg-blue-600" : "bg-blue-500"
+              } text-white font-semibold transition-colors duration-300`}
+            onClick={() => handleDownload("linux-deb")}
+          >
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+
+              <span className="text-lg ml-3">for Ubuntu (.deb)</span>
+            </div>
+          </motion.button>
+
+          {/* Linux .rpm Button */}
+          {/* <motion.button
+            className={`flex flex-col items-center justify-center p-4 rounded-lg w-full md:w-48 ${
+              darkMode ? "bg-blue-600" : "bg-blue-500"
+            } text-white font-semibold transition-colors duration-300`}
+            onClick={() => handleDownload("linux-rpm")}
+          >
+            <div className="flex items-center mb-2">
+              <span className="text-2xl mr-2">⬇</span>
+              <span className="text-xl">.rpm</span>
+            </div>
+            <span className="text-sm">Red Hat, Fedora, SUSE</span>
+          </motion.button> */}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Instructions Section
+
+function InstructionSection({ darkMode }) {
+  return (
+    <section id="guide" className="md:my-20 md:h-[90vh] content-center">
+      <section
+        id="about"
+        className={`my-20 p-8 md:mt-28 rounded-lg ${
+          darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-black"
+        } h-auto  overflow-auto`}
+      >
+        <h2 className="text-2xl md:text-4xl font-bold mb-8 text-start font-playfair">
+          Documentation
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Windows Installation</h3>
+            <ol className="space-y-3 text-sm md:text-base">
+              <li>1. Ensure you're logged into both your Google account and Google Photos.</li>
+              <li>2. Download and launch the GPsync application (.exe).</li>
+              <li>3. Select the appropriate account tailored to your synchronization needs.</li>
+              <li>4. Specify the appropriate directory for downloading photos, or use the default path.</li>
+              <li>5. Initiate the process and let GPsync work its magic.</li>
+              <li>6. For an in-depth visual guide, explore our comprehensive tutorial:
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
+                  🎥 Watch Windows Tutorial
+                </a>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Ubuntu Installation</h3>
+            <ol className="space-y-3 text-sm md:text-base">
+              <li>1. First of all Log into your Google account and Google Photos via Firefox.</li>
+              <li>2. After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
+                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
+              </li>
+              <li>3. Launch the application on terminal(ctrl+alt+t) with:
+                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
+              </li>
+              <li>4. Allow GPsync to orchestrate your synchronization seamlessly.</li>
+              <li>5. To uninstall application, type command:
+              <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
+              </li>
+              <li>6. For a detailed walkthrough, our video guide awaits:
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
+                  🎥 Watch Ubuntu Tutorial
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </section>
+  );
+}
+
+{/* <h3 className="text-xl md:text-3xl font-semibold mb-8 text-center font-playfair">
+         How the Software Works
+       </h3>
+       <video
+         controls
+         autoPlay
+         muted
+         className="w-full h-48 md:h-64 mt-4 rounded-lg border border-gray-700"
+       >
+         <source src="/instruction-video.mp4" type="video/mp4" />
+         Your browser does not support the video tag.
+       </video> */}
+
+
+
+// creator card section 
+
+function CreatorsSection({ creators, darkMode, isMobile }) {
+  return (
+    <section className="md:pt-28" id="ourcreator">
+      <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair content-end">
+        Meet Our Creators
+      </h3>
+      <div className="flex flex-col items-center">
+        <div
+          className={`flex flex-col ${isMobile ? "" : "md:flex-row"
+            } justify-center gap-8 mb-8 w-full`}
+        >
+          {creators.map((creator, index) => (
+            <CreatorCard key={index} creator={creator} darkMode={darkMode} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+function CreatorCard({ creator, darkMode }) {
+  return (
+    <motion.div
+      className={`w-full md:w-64 p-6 rounded-lg shadow-lg ${darkMode ? "bg-gray-800" : "bg-white"
+        }`}
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <Image
+        src={creator.image}
+        alt={creator.name}
+        width={150}
+        height={150}
+        className="rounded-full mx-auto mb-4"
+      />
+      <h4 className="text-lg md:text-xl font-semibold mb-2 text-center">
+        {creator.name}
+      </h4>
+      <p className="text-sm mb-4 text-center">{creator.role}</p>
+      <div className="flex justify-center space-x-4">
+        {Object.entries(creator.socials).map(
+          ([platform, link]) =>
+            link !== "#" && ( // Only render if the link is not a placeholder
+              <motion.a
+                key={platform}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {platform === "linkedin" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="#0077B5"
+                    className="bi bi-linkedin"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                  </svg>
+                ) : platform === "github" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-github"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                  </svg>
+                ) : null}
+              </motion.a>
+            )
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+function AnimatedStar({ filled, onClick, onHover, onMouseLeave }) {
+  return (
+    <div
+      onClick={onClick}
+      onMouseEnter={onHover}
+      onMouseLeave={onMouseLeave}
+      className="cursor-pointer"
+    >
+      <Star
+        className={`w-8 h-8 ${filled ? "text-yellow-400 fill-current" : "text-gray-300"
+          }`}
+      />
+    </div>
+  );
+}
+
+function StarRating({ rating, setRating, isInteractive = true }) {
+  const [hover, setHover] = useState(null);
+
+  return (
+    <div className="flex space-x-2 mb-4">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <AnimatedStar
+          key={star}
+          filled={star <= (isInteractive ? hover || rating : rating)}
+          onClick={() => isInteractive && setRating(star)}
+          onHover={() => isInteractive && setHover(star)}
+          onMouseLeave={() => isInteractive && setHover(null)}
+        />
+      ))}
+    </div>
+  );
+}
+
+// Testimonial Section 
+
+
+// import { useState, useEffect } from 'react';
+
+export function TestimonialSection({ darkMode }) {
+  const [testimonials, setTestimonials] = useState([]);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    // Fetch testimonials from the API
+    async function fetchTestimonials() {
+      try {
+        const response = await fetch('/api/feedback');
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+      }
+    }
+
+    fetchTestimonials();
+  }, []);
+
+  // Function to cycle through testimonials
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, [testimonials]);
+
+  if (testimonials.length === 0) {
+    return <p>Loading testimonials...</p>; // Display loading while fetching data
+  }
+
+  return (
+    <section
+      id="testimonials"
+      className="mt-6 border-t-[1px] border-gray-500 md:border-0 pt-12 md:my-20 md:h-[100vh] content-center"
+    >
+      <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
+        What Our Users Say
+      </h3>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentTestimonial}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.3 }}
+          className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
+        >
+          <div className="flex justify-between items-start mb-4">
+            <h4 className="font-semibold font-poppins">
+              {testimonials[currentTestimonial]?.name}
+            </h4>
+            <StarRating
+              rating={testimonials[currentTestimonial]?.rating}
+              isInteractive={false}
+            />
+          </div>
+          <p className={`font-poppins ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            {testimonials[currentTestimonial]?.message}
+          </p>
+        </motion.div>
+      </AnimatePresence>
+    </section>
+  );
+}
+
+
+// Feedback Form Section 
+
+export function FeedbackForm({ darkMode }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    rating: 0,
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleRatingChange = (newRating) => {
+    setFormData({ ...formData, rating: newRating });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/feedback/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to submit feedback: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      alert("An error occurred. Please try again later.");
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center">
+        <p className="font-poppins text-lg">
+          Your response has been sent. Thank you for your feedback!
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <section
+      id="feedback"
+      className="my-20 md:min-h-[90vh] flex items-center justify-center"
+    >
+      <form onSubmit={handleSubmit} className="max-w-md w-full mx-auto">
+        <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
+          Leave Your Feedback
+        </h3>
+        {["name", "email", "message"].map((field) => (
+          <div key={field} className="mb-4">
+            <label
+              htmlFor={field}
+              className="block mb-2 font-poppins capitalize"
+            >
+              {field}
+            </label>
+            <input
+              type={
+                field === "email"
+                  ? "email"
+                  : field === "message"
+                    ? "textarea"
+                    : "text"
+              }
+              id={field}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              className={`w-full px-3 py-2 rounded ${darkMode
+                ? "bg-gray-700 text-white"
+                : "bg-gray-200 text-gray-900"
+                } transition-colors duration-300 font-poppins`}
+              required
+            />
+          </div>
+        ))}
+        <div className="mb-4">
+          <label className="block mb-2 font-poppins">Your Rating</label>
+          <StarRating rating={formData.rating} setRating={handleRatingChange} />
+        </div>
+        <button
+          type="submit"
+          className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-md font-poppins"
+        >
+          Submit Feedback
+        </button>
+      </form>
+    </section>
+  );
+}
+
+// Buy me a coffe section 
+
+// function BuyMeCoffeeSection({ darkMode }) {
+//   return (
+//     <section className="my-20 h-[90vh] content-center" id="donate">
+//       <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
+//         Buy Me a Coffee
+//       </h3>
+//       <div className="flex justify-center">
+//         <a
+//           href="https://www.buymeacoffee.com/username"
+//           className={`p-4 rounded-lg ${
+//             darkMode ? "bg-blue-600" : "bg-yellow-500"
+//           } text-white transition-colors hover:bg-opacity-80`}
+//         >
+//           Support the Project
+//         </a>
+//       </div>
+//     </section>
+//   );
+// }
+
+function AdSection() {
+  return (
+    <div className="bg-transparent bg-gray-300 fixed mx-6 h-[85vh] w-[14%] p-4 rounded-lg mb-8 text-center font-poppins">
+      {/* <h4 className="bg-transparent text-lg font-semibold mb-2">Advertisement</h4>
+      <p classaName="text-gray-700 text-opacity-50">Your Ad Here</p> */}
+    </div>
+  );
+}
