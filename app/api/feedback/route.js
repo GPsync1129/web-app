@@ -31,32 +31,35 @@ export async function POST(req) {
 
 // gpsyncofficial
 // 2HGtFqHDVucTz7H2
+
 export async function GET() {
-    if (!uri) {
-      return new Response('Missing MongoDB URI', { status: 500 });
-    }
-  
-    const client = new MongoClient(uri);
-  
-    try {
-      await client.connect();
-      const db = client.db('yourDatabaseName');
-      const collection = db.collection('feedback');
-  
-      // Retrieve feedback, you can limit or sort if needed
-      const feedbacks = await collection.find({}).toArray();
-  
-      // Return feedback data as JSON
-      return new Response(JSON.stringify(feedbacks), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (error) {
-      console.error("MongoDB connection error:", error);
-      return new Response('Failed to retrieve feedback.', { status: 500 });
-    } finally {
-      await client.close();
-    }
+  if (!uri) {
+    return new Response('Missing MongoDB URI', { status: 500 });
   }
+
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const db = client.db('yourDatabaseName');
+    const collection = db.collection('feedback');
+
+    // Sort by date (oldest first) and limit the results to 7
+    const feedbacks = await collection.find({})
+      .sort({ date: 1 }) // Sort by date in ascending order (oldest first)
+      .limit(7) // Limit the result to the first 7 entries
+      .toArray();
+
+    return new Response(JSON.stringify(feedbacks), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    return new Response('Failed to retrieve feedback.', { status: 500 });
+  } finally {
+    await client.close();
+  }
+}
