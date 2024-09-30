@@ -531,7 +531,7 @@ function CreatorCard({ creator, darkMode }) {
 }
 
 
-// STAR Animation
+// STAR Animations
 
 function AnimatedStar({ filled, onClick, onHover, onMouseLeave }) {
   return (
