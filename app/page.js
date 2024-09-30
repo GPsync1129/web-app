@@ -248,7 +248,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
     
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md size-1"
             >
               {darkMode ? "🌞" : "🌙"}
             </button>
