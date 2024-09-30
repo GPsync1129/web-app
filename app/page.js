@@ -379,7 +379,7 @@ function InstructionSection({ darkMode }) {
           <div>
             <h3 className="text-xl font-semibold mb-4">Windows Installation</h3>
             <ol className="space-y-3 text-sm md:text-base">
-              <li>1. Ensure you're logged into both your Google account and Google Photos.</li>
+              <li>1. Ensure you are logged into both your Google account and Google Photos.</li>
               <li>2. Download and launch the GPsync application (.exe).</li>
               <li>3. Select the appropriate account tailored to your synchronization needs.</li>
               <li>4. Specify the appropriate directory for downloading photos, or use the default path.</li>
