@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "GP-sync",
+  title: "GPsync",
   description: "download google photos with metadat📱📸",
 };
 

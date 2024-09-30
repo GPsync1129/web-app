@@ -201,7 +201,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
         } shadow-md`}
     >
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="#" className="font-bold text-xl">
+        <a href="https://www.gpsync.online/" className="font-bold text-xl">
           Google Photos Download
         </a>
         {isMobile ? (
