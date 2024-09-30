@@ -8,174 +8,186 @@ import Confetti from "react-confetti";
 import { Star } from "lucide-react";
 
 export default function Home() {
-  const [selectedOS, setSelectedOS] = useState(null);
-  const [darkMode, setDarkMode] = useState(true);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+      const [selectedOS, setSelectedOS] = useState(null);
+      const [darkMode, setDarkMode] = useState(true);
+      const [showConfetti, setShowConfetti] = useState(false);
+      const [currentTestimonial, setCurrentTestimonial] = useState(0);
+      const [isMobile, setIsMobile] = useState(false);
+    
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+        }, 5000);
+    
+        const handleResize = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+    
+        handleResize();
+        window.addEventListener("resize", handleResize);
+    
+        return () => {
+          clearInterval(interval);
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+    
+      const testimonials = [
+        { name: "John Doe", text: "This software is amazing!" },
+        { name: "Jane Smith", text: "Incredibly easy to use." },
+        { name: "Bob Johnson", text: "Game-changing for my workflow." },
+        { name: "Johnson", text: "Game-changing for my workflow." },
+        { name: "Bob Doe", text: "Game-changing for my workflow." },
+      ];
+    
+      const creators = [
+        {
+          name: "Om Chaudhari",
+          role: "Django Developer",
+          image: "/cr2.png",
+          socials: {
+            linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+            github: "https://github.com/omchaudhari1107",
+          },
+        },
+        {
+          name: "Yash Chaudhari",
+          role: "The Mastermind",
+          image: "/cr2.png",
+          socials: {
+            linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
+            github: "https://github.com/Yashchaudhari29/",
+          },
+        },
+        {
+          name: "Shreekant Sureliya",
+          role: "Software Developer",
+          image: "/cr2.png",
+          socials: {
+            linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+            github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+          },
+        },
+      ];
+    
+      const handleDownload = (os) => {
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 5000);
+        console.log(`Downloading for ${os}`);
+      };
+    
+      return (
+        <div
+          className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+            } transition-colors duration-300`}
+        >
+          <Head>
+            <title>GPsync</title>
+            <meta
+              name="description"
+              content="Download software for Windows and Linux"
+            />
+            <link rel="icon" href="/favicon.ico" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+              rel="stylesheet"
+            />
+          </Head>
+    
+          {showConfetti && <Confetti />}
+    
+          <Navbar
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            isMobile={isMobile}
+          />
+    
+          <main className="mx-auto px-4 py-20">
+            <div className="flex flex-col lg:flex-row justify-between">
+              {!isMobile && (
+                <aside className="lg:w-1/6 mb-4 lg:mb-0">
+                  <AdSection />
+                </aside>
+              )}
+    
+              <motion.div
+                className={`${isMobile ? "w-full" : "lg:w-2/3"}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.h1
+                  className="text-3xl md:text-5xl font-bold text-center font-playfair bg-clip-text text-transparent bg-gradient-to-r from-white to-[#f0f0f0]"
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+                >
+                  <div className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'}`}>
+                    <Typewriter
+                      words={["Capture Moments, Secure Memories"]}
+                      loop={1}
+                      typeSpeed={70}
+                      deleteSpeed={50}
+                      delaySpeed={1000}
+                    />
+                  </div>
+                </motion.h1>
+                
+                {/* <motion.h2
+                  className="text-xl md:text-2xl text-center mb-8 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  Capture Moments, Secure Memories
+                </motion.h2> */}
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const testimonials = [
-    { name: "John Doe", text: "This software is amazing!" },
-    { name: "Jane Smith", text: "Incredibly easy to use." },
-    { name: "Bob Johnson", text: "Game-changing for my workflow." },
-    { name: "Johnson", text: "Game-changing for my workflow." },
-    { name: "Bob Doe", text: "Game-changing for my workflow." },
-  ];
-
-  const creators = [
-    {
-      name: "Om Chaudhari",
-      role: "Django Developer",
-      image: "/cr2.png",
-      socials: {
-        linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
-        github: "https://github.com/omchaudhari1107",
-      },
-    },
-    {
-      name: "Yash Chaudhari",
-      role: "The Mastermind",
-      image: "/cr2.png",
-      socials: {
-        linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
-        github: "https://github.com/Yashchaudhari29/",
-      },
-    },
-    {
-      name: "Shreekant Sureliya",
-      role: "Software Developer",
-      image: "/cr2.png",
-      socials: {
-        linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
-        github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
-      },
-    },
-  ];
-
-  const handleDownload = (os) => {
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 5000);
-    console.log(`Downloading for ${os}`);
-  };
-
-  return (
-    <div
-      className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
-        } transition-colors duration-300`}
-    >
-      <Head>
-        <title>Software Download Center</title>
-        <meta
-          name="description"
-          content="Download software for Windows and Linux"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
-      {showConfetti && <Confetti />}
-
-      <Navbar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        isMobile={isMobile}
-      />
-
-      <main className="mx-auto px-4 py-20">
-        <div className="flex flex-col lg:flex-row justify-between">
-          {!isMobile && (
-            <aside className="lg:w-1/6 mb-4 lg:mb-0">
-              <AdSection />
-            </aside>
-          )}
-
-          <motion.div
-            className={`${isMobile ? "w-full" : "lg:w-2/3"}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-3xl md:text-5xl font-bold text-center font-playfair bg-clip-text text-transparent bg-gradient-to-r from-white to-[#f0f0f0]"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            >
-              <div className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'}`} >
-                <Typewriter
-                  words={["Capture Moments, Secure Memories"]}
-                  loop={1}
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1000}
+                <motion.h3
+                  className={`text-xxl md:text-xl lg:text-2xl text-center mt-4 mb-8 font-poppins ${
+                    darkMode ? 'text-gray-100' : 'text-gray-700'
+                  } text-justify md:text-center`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  Why choose us? Unlike Google Photos, we keep all the important metadata from your images, ensuring your memories are preserved in detail. Plus, you can easily download entire albums at once, making it simple to enjoy and share your cherished moments. We focus on providing a more user-friendly way to protect your visual stories.
+                </motion.h3>
+    
+                <DownloadSection
+                  handleDownload={handleDownload}
+                  darkMode={darkMode}
+                  isMobile={isMobile}
                 />
-              </div>
-            </motion.h1>
-            {/* <motion.h2
-              className="text-xl md:text-2xl text-center mb-8 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-            >
-              Capture Moments, Secure Memories
-            </motion.h2> */}
-
-            <DownloadSection
-              handleDownload={handleDownload}
-              darkMode={darkMode}
-              isMobile={isMobile}
-            />
-
-            <InstructionSection darkMode={darkMode} />
-
-            <CreatorsSection
-              creators={creators}
-              darkMode={darkMode}
-              isMobile={isMobile}
-            />
-
-            <TestimonialSection
-              testimonials={testimonials}
-              currentTestimonial={currentTestimonial}
-              darkMode={darkMode}
-            />
-
-            <FeedbackForm darkMode={darkMode} />
-
-            {/* <BuyMeCoffeeSection darkMode={darkMode} /> */}
-          </motion.div>
-
-          {!isMobile && (
-            <aside className="lg:w-1/6 mt-8 lg:mt-0">
-              <AdSection />
-            </aside>
-          )}
+    
+                <InstructionSection darkMode={darkMode} />
+    
+                <CreatorsSection
+                  creators={creators}
+                  darkMode={darkMode}
+                  isMobile={isMobile}
+                />
+    
+                <TestimonialSection
+                  testimonials={testimonials}
+                  currentTestimonial={currentTestimonial}
+                  darkMode={darkMode}
+                />
+    
+                <FeedbackForm darkMode={darkMode} />
+              </motion.div>
+    
+              {!isMobile && (
+                <aside className="lg:w-1/6 mt-8 lg:mt-0">
+                  <AdSection />
+                </aside>
+              )}
+            </div>
+          </main>
         </div>
-      </main>
-    </div>
-  );
-}
+      );
+    }
+
+           
 
 
 //Navbar
@@ -379,7 +391,7 @@ function InstructionSection({ darkMode }) {
           <div>
             <h3 className="text-xl font-semibold mb-4">Windows Installation</h3>
             <ol className="space-y-3 text-sm md:text-base">
-              <li>1. Ensure you are logged into both your Google account and Google Photos.</li>
+              <li>1. Ensure you're logged into both your Google account and Google Photos.</li>
               <li>2. Download and launch the GPsync application (.exe).</li>
               <li>3. Select the appropriate account tailored to your synchronization needs.</li>
               <li>4. Specify the appropriate directory for downloading photos, or use the default path.</li>
@@ -395,17 +407,14 @@ function InstructionSection({ darkMode }) {
             <h3 className="text-xl font-semibold mb-4">Ubuntu Installation</h3>
             <ol className="space-y-3 text-sm md:text-base">
               <li>1. First of all Log into your Google account and Google Photos via Firefox.</li>
-              <li>2. After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
+              <li>2. After acquiring the GPsync.deb file, execute this command:
                 <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
               </li>
-              <li>3. Launch the application on terminal(ctrl+alt+t) with:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
+              <li>3. Launch the application with:
+                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>/usr/local/bin/gpsync</code></pre>
               </li>
               <li>4. Allow GPsync to orchestrate your synchronization seamlessly.</li>
-              <li>5. To uninstall application, type command:
-              <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
-              </li>
-              <li>6. For a detailed walkthrough, our video guide awaits:
+              <li>5. For a detailed walkthrough, our video guide awaits:
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
                   🎥 Watch Ubuntu Tutorial
                 </a>
@@ -518,6 +527,9 @@ function CreatorCard({ creator, darkMode }) {
   );
 }
 
+
+// STAR Animation
+
 function AnimatedStar({ filled, onClick, onHover, onMouseLeave }) {
   return (
     <div
@@ -553,9 +565,6 @@ function StarRating({ rating, setRating, isInteractive = true }) {
 }
 
 // Testimonial Section 
-
-
-// import { useState, useEffect } from 'react';
 
 export function TestimonialSection({ darkMode }) {
   const [testimonials, setTestimonials] = useState([]);
@@ -657,6 +666,15 @@ export function FeedbackForm({ darkMode }) {
   
       if (response.ok) {
         setIsSubmitted(true);
+        // Reset form data to allow for multiple submissions
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          rating: 0,
+        });
+        // Automatically close modal after 3 seconds
+        setTimeout(() => setIsSubmitted(false), 3000);
       } else {
         const errorData = await response.json();
         alert(`Failed to submit feedback: ${errorData.message}`);
@@ -667,25 +685,16 @@ export function FeedbackForm({ darkMode }) {
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="text-center">
-        <p className="font-poppins text-lg">
-          Your response has been sent. Thank you for your feedback!
-        </p>
-      </div>
-    );
-  }
-
   return (
     <section
       id="feedback"
-      className="my-20 md:min-h-[90vh] flex items-center justify-center"
+      className="my-20 md:min-h-[90vh] flex items-center justify-center px-4"
     >
       <form onSubmit={handleSubmit} className="max-w-md w-full mx-auto">
         <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
           Leave Your Feedback
         </h3>
+
         {["name", "email", "message"].map((field) => (
           <div key={field} className="mb-4">
             <label
@@ -714,6 +723,7 @@ export function FeedbackForm({ darkMode }) {
             />
           </div>
         ))}
+
         <div className="mb-4">
           <label className="block mb-2 font-poppins">Your Rating</label>
           <StarRating rating={formData.rating} setRating={handleRatingChange} />
@@ -725,9 +735,28 @@ export function FeedbackForm({ darkMode }) {
           Submit Feedback
         </button>
       </form>
+
+      {/* Success Popup - Top aligned with slide-in animation */}
+      <AnimatePresence>
+        {isSubmitted && (
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            className="fixed top-5 inset-x-0 mx-auto w-full max-w-sm z-50"
+          >
+            <div className="bg-green-500 text-white p-4 rounded-lg shadow-md text-center">
+              <h2 className="text-lg font-semibold">Success!</h2>
+              <p>Your response has been sent.</p>
+              <p>Thank you for your valuable feedback!</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
+
 
 // Buy me a coffe section 
 
