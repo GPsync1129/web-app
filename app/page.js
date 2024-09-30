@@ -43,7 +43,7 @@ export default function Home() {
       const creators = [
         {
           name: "Om Chaudhari",
-          role: "Developer",
+          role: "ML Developer",
           image: "/om.jpg",
           socials: {
             linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
@@ -52,7 +52,7 @@ export default function Home() {
         },
         {
           name: "Yash Chaudhari",
-          role: "Developer",
+          role: "ML Developer",
           image: "/Yash.png",
           socials: {
             linkedin: "https://www.linkedin.com/in/yash-chaudhari-254961242/",
