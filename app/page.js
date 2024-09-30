@@ -250,7 +250,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
         onClick={() => setDarkMode(!darkMode)}
         className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
       >
-        <span style={{ fontSize: '2rem' }}>
+        <span style={{ fontSize: '1.5rem' }}>
           {darkMode ? "🌞" : "🌙"}
         </span>
       </button>
@@ -275,12 +275,14 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           <a href="https://www.buymeacoffee.com/" className="block px-6 py-2">
             Support
           </a>
-        <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
-            >
-              {darkMode ? "🌞" : "🌙"}
-            </button>
+          <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+      >
+        <span style={{ fontSize: '1.5rem' }}>
+          {darkMode ? "🌞" : "🌙"}
+        </span>
+      </button>
         </div>
       )}
     </nav>
