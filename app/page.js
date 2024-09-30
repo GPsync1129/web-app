@@ -597,9 +597,9 @@ export function TestimonialSection({ darkMode }) {
     return () => clearInterval(intervalId); // Cleanup on component unmount
   }, [testimonials]);
 
-  if (testimonials.length === 0) {
-    return <p>Loading testimonials...</p>; // Display loading while fetching data
-  }
+  // if (testimonials.length === 0) {
+  //   return <p>Loading testimonials...</p>; // Display loading while fetching data
+  // }
 
   return (
     <section
