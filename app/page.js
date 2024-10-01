@@ -395,13 +395,13 @@ function InstructionSection({ darkMode }) {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-4">Windows Installation</h3>
-            <ol className="space-y-3 text-sm md:text-base">
-              <li>1. Ensure you are logged into both your Google account and Google Photos.</li>
-              <li>2. Download and launch the GPsync application (.exe).</li>
-              <li>3. Select the appropriate account tailored to your synchronization needs.</li>
-              <li>4. Specify the appropriate directory for downloading photos, or use the default path.</li>
-              <li>5. Initiate the process and let GPsync work its magic.</li>
-              <li>6. For an in-depth visual guide, explore our comprehensive tutorial:
+            <ol className="list-decimal space-y-3 text-sm md:text-base">
+              <li>Ensure you are logged into both your Google account and Google Photos.</li>
+              <li>Download and launch the GPsync application (.exe).</li>
+              <li>Select the appropriate account tailored to your synchronization needs.</li>
+              <li>Specify the appropriate directory for downloading photos, or use the default path.</li>
+              <li>Initiate the process and let GPsync work its magic.</li>
+              <li>For an in-depth visual guide, explore our comprehensive tutorial:
                 <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
                   🎥 Watch Windows Tutorial
                 </a>
