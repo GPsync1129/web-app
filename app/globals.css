@@ -1,4 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+    font-family: 'Afacad_Flux';
+    src: url('/fonts/Afacad_Flux.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

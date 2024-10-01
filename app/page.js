@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import Confetti from "react-confetti";
 import { Star } from "lucide-react";
-
+import '../app/globals.css';
 export default function Home() {
       const [selectedOS, setSelectedOS] = useState(null);
       const [darkMode, setDarkMode] = useState(true);
@@ -117,7 +117,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <motion.h1
-                  className="text-3xl md:text-5xl font-bold text-center font-playfair bg-clip-text text-transparent bg-gradient-to-r from-white to-[#f0f0f0]"
+                  className="text-3xl md:text-5xl font-bold text-center font-Afacad_Flux bg-clip-text text-transparent bg-gradient-to-r"
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
