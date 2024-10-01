@@ -411,23 +411,24 @@ function InstructionSection({ darkMode }) {
           <div>
             <h3 className="text-xl font-semibold mb-4">Ubuntu Installation</h3>
             <ol className="space-y-3 text-sm md:text-base">
-              <li>1. First of all Log into your Google account and Google Photos via Firefox.</li>
-              <li>2. After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
-              </li>
-              <li>3. Launch the application on terminal(ctrl+alt+t) with:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
-              </li>
-              <li>4. Allow GPsync to orchestrate your synchronization seamlessly.</li>
-              <li>5. To uninstall application, type command:
+            <li>First of all, log into your Google account and Google Photos via Firefox.</li>
+            <li>After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
+              <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
+            </li>
+            <li>Launch the application on terminal (ctrl+alt+t) with:
+              <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
+            </li>
+            <li>Allow GPsync to orchestrate your synchronization seamlessly.</li>
+            <li>To uninstall the application, type the command:
               <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
-              </li>
-              <li>6. For a detailed walkthrough, our video guide awaits:
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
-                  🎥 Watch Ubuntu Tutorial
-                </a>
-              </li>
-            </ol>
+            </li>
+            <li>For a detailed walkthrough, our video guide awaits:
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
+                🎥 Watch Ubuntu Tutorial
+              </a>
+            </li>
+          </ol>
+
           </div>
         </div>
       </section>
