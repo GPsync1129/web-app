@@ -76,23 +76,23 @@ export default function Home() {
         console.log(`Downloading for ${os}`);
       };
     
-        <Head>
-          <title>GPsync</title>
-          <meta
-            name="description"
-            content="Download software for Windows and Linux"
-          />
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
       return (
         <div
-          className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+        className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
             } transition-colors duration-300`}
-        >
+            >
+            <Head>
+              <meta
+                name="description"
+                content="Download google photos with metadata"
+              />
+              <meta name="google-adsense-account" content="ca-pub-9488068101453959"/>
+              <link rel="icon" href="/favicon.ico" />
+              <link
+                href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+                rel="stylesheet"
+              />
+            </Head>
     
           {showConfetti && <Confetti />}
     
