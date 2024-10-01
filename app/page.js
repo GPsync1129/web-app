@@ -87,7 +87,7 @@ export default function Home() {
                 content="Download google photos with metadata"
               />
               <meta name="google-adsense-account" content="ca-pub-9488068101453959"/>
-              <link rel="icon" href="/favicon.ico" />
+              {/* <link rel="icon" href="/favicon.ico" /> */}
               <link
                 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
                 rel="stylesheet"
