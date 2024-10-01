@@ -402,7 +402,7 @@ function InstructionSection({ darkMode }) {
               <li>4. Specify the appropriate directory for downloading photos, or use the default path.</li>
               <li>5. Initiate the process and let GPsync work its magic.</li>
               <li>6. For an in-depth visual guide, explore our comprehensive tutorial:
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
                   🎥 Watch Windows Tutorial
                 </a>
               </li>
@@ -423,7 +423,7 @@ function InstructionSection({ darkMode }) {
               <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
               </li>
               <li>6. For a detailed walkthrough, our video guide awaits:
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
                   🎥 Watch Ubuntu Tutorial
                 </a>
               </li>
