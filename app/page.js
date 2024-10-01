@@ -124,7 +124,7 @@ export default function Home() {
                 >
                   <div className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'}`}>
                     <Typewriter
-                      words={["Capture Moments✨, Secure Memories.📱"]}
+                      words={["Capture Moments, Secure Memories."]}
                       loop={1}
                       typeSpeed={70}
                       deleteSpeed={50}
