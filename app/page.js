@@ -148,7 +148,7 @@ export default function Home() {
                   } text-justify md:text-center`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.8 }}
+                  transition={{ delay: 0, duration: 0.5 }}
                 >
                   Why choose us? Unlike Google Photos, we keep all the important metadata from your images, ensuring your memories are preserved in detail. Plus, you can easily download entire albums at once, making it simple to enjoy and share your cherished moments. We focus on providing a more user-friendly way to protect your visual stories.
                 </motion.h3>
