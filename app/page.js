@@ -215,7 +215,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           </div>
         ) : (
           <div className="flex items-center">
-            <a href="#" className="mx-3">
+            <a href="https://www.gpsync.online/" className="mx-3">
               Home
             </a>
             <a href="#guide" className="mx-3">
@@ -260,7 +260,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
       </div>
       {isMobile && menuOpen && (
         <div className={`${darkMode ? "bg-gray-800" : "bg-white"} py-2`}>
-          <a href="#" className="block px-6 py-2">
+          <a href="https://www.gpsync.online/" className="block px-6 py-2">
             Home
           </a>
           <a href="#ourcreator" className="block px-6 py-2">
