@@ -73,7 +73,15 @@ export default function Home() {
       const handleDownload = (os) => {
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 5000);
+      
         console.log(`Downloading for ${os}`);
+      
+        // Download logic based on OS
+        if (os === "windows") {
+          window.location.href = "/gpsync.exe";  // Windows file
+        } else if (os === "linux-deb") {
+          window.location.href = "/gpsync.deb";  // Ubuntu .deb file
+        }
       };
     
       return (
@@ -316,13 +324,25 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
             } text-white font-semibold transition-colors duration-300`}
           onClick={() => handleDownload("windows")}
         >
-          <div className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-            </svg>
-
-            <span className="text-lg ml-3">for Windows-v1.0 (.exe)</span>
+          <div className="flex items-center flex-wrap sm:flex-nowrap">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+            
+              <span className="text-lg ml-3">for Windows-v1.0 (.exe)</span>
           </div>
+
           {/* <span className="text-xs md:text-sm">Windows 10, 11</span> */}
         </motion.button>
       </div>
@@ -350,12 +370,23 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
               } text-white font-semibold transition-colors duration-300`}
             onClick={() => handleDownload("linux-deb")}
           >
-            <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-
-              <span className="text-lg ml-3">for Ubuntu-v1.0 (.deb)</span>
+            <div className="flex items-center flex-wrap sm:flex-nowrap">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                      />
+                    </svg>
+                  
+                    <span className="text-lg ml-3">for Ubuntu-v1.0 (.deb)</span>
             </div>
           </motion.button>
 
