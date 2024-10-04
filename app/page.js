@@ -62,9 +62,9 @@ export default function Home() {
         {
           name: "Shreekant Sureliya",
           role: "Developer@ONGC",
-          image: "/cr2.png",
+          image: "/shree.jpg",
           socials: {
-            linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+            linkedin: "https://www.linkedin.com/in/shreekant-sureliya-69aaa3125/",
             github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
           },
         },
