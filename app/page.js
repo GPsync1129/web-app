@@ -64,7 +64,7 @@ export default function Home() {
           role: "Developer@ONGC",
           image: "/shree.jpg",
           socials: {
-            linkedin: "https://www.linkedin.com/in/shreekant-sureliya-69aaa3125/",
+            linkedin: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
             github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
           },
         },
@@ -81,10 +81,10 @@ export default function Home() {
       
         if (os === "windows") {
           // Direct download link for the Windows file
-          fileUrl = "https://drive.google.com/uc?export=download&id=1Z5Oq2S7Jdlkj-Qvol0SrowD1pkv2UlYq";  // Windows file
+          fileUrl = "/public/gpsync.exe";  // Windows file
         } else if (os === "linux-deb") {
           // Replace with the actual Linux file ID if available
-          fileUrl = "https://drive.google.com/uc?export=download&id=YOUR_LINUX_FILE_ID";  // Ubuntu .deb file
+          fileUrl = "/public/gpsync.deb";  // Ubuntu .deb file
         } else {
           console.error("Unsupported OS selected.");
           return;
