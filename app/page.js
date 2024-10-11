@@ -80,18 +80,16 @@ export default function Home() {
         let fileUrl;
       
         if (os === "windows") {
-          // Direct download link for the Windows file
-          fileUrl = "/public/gpsync.exe";  // Windows file
+          alert(`You may see a warning saying "This file is too large for Google to scan for viruses." Click "Download anyway" to proceed with the download.`);
+          fileUrl = "https://drive.usercontent.google.com/download?id=1Z5Oq2S7Jdlkj-Qvol0SrowD1pkv2UlYq&export=download&authuser=0";
         } else if (os === "linux-deb") {
-          // Replace with the actual Linux file ID if available
-          fileUrl = "/gpsync.deb";  // Ubuntu .deb file
+          fileUrl = "/gpsync.deb";
         } else {
           console.error("Unsupported OS selected.");
           return;
         }
       
         // Inform user about the warning
-        // alert(`You may see a warning saying "This file is too large for Google to scan for viruses." Click "Download anyway" to proceed with the download.`);
         
         // Initiate the download
         window.location.href = fileUrl;
