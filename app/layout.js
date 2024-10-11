@@ -25,6 +25,8 @@ export default function RootLayout({ children }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content="app/favicon-32x32.png"></meta>
         <meta name="keywords" content="Google Photos, Download, Metadata" />
         <link rel="apple-touch-icon" sizes="180x180" href="app/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="app/favicon-32x32.png"/>
