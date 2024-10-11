@@ -81,7 +81,7 @@ export default function Home() {
       
         if (os === "windows") {
           // Direct download link for the Windows file
-          fileUrl = "public/gpsync.exe";  // Windows file
+          fileUrl = "/public/gpsync.exe";  // Windows file
         } else if (os === "linux-deb") {
           // Replace with the actual Linux file ID if available
           fileUrl = "/gpsync.deb";  // Ubuntu .deb file
