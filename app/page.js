@@ -91,7 +91,7 @@ export default function Home() {
         }
       
         // Inform user about the warning
-        alert(`You may see a warning saying "This file is too large for Google to scan for viruses." Click "Download anyway" to proceed with the download.`);
+        // alert(`You may see a warning saying "This file is too large for Google to scan for viruses." Click "Download anyway" to proceed with the download.`);
         
         // Initiate the download
         window.location.href = fileUrl;
