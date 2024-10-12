@@ -282,6 +282,9 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           <a href="https://www.gpsync.online/" className="block px-6 py-2">
             Home
           </a>
+          <a href="#guide" className="block px-6 py-2">
+            Guide
+          </a>
           <a href="#ourcreator" className="block px-6 py-2">
             Creators
           </a>
