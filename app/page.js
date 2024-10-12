@@ -654,8 +654,9 @@ export function TestimonialSection({ darkMode }) {
 
   return (
     <section
-      id="testimonials"
-      className="mt-6 border-t-[1px] border-gray-500 md:border-0 pt-12 md:my-20 md:h-[100vh] content-center"
+    id="testimonials"
+    className="mt-6 border-gray-500 md:border-0 pt-12 md:my-20 content-center"
+    style={{ height: '100vh' }}
     >
       <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
         What Our Users Say
