@@ -80,8 +80,7 @@ export default function Home() {
         let fileUrl;
       
         if (os === "windows") {
-          alert(`You may see a warning saying "This file is too large for Google to scan for viruses." Click "Download anyway" to proceed with the download.`);
-          fileUrl = "https://drive.usercontent.google.com/download?id=1Z5Oq2S7Jdlkj-Qvol0SrowD1pkv2UlYq&export=download&authuser=0";
+          fileUrl = "https://download1325.mediafire.com/8i3ik5ps7uqgBdgFpW9Hy99XLngNzZ2xVU_rFmYh2uLM5GTnVivlY8YY4e38b4v6RVUrVaD5FvQJ_7p3wExAnL8ZbNvpgd6wdHuurNrd69dBbNq7beObPIAsOQVF1VLP14T6MxV-yHOmLiqcwX-xo5ch-dY69TUDTM0hRoPcMrx9/jwo2ollkswoy5c4/gpsync.exe";
         } else if (os === "linux-deb") {
           fileUrl = "/gpsync.deb";
         } else {
