@@ -500,24 +500,29 @@ function InstructionSection({ darkMode }) {
 
 function CreatorsSection({ creators, darkMode, isMobile }) {
   return (
-    <section className="md:pt-28" id="ourcreator" 
-    style={{ height: '100vh' }}>
-      <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair content-end">
-        Meet Our Creators
-      </h3>
-      <div className="flex flex-col items-center">
-        <div
-          className={`flex flex-col ${isMobile ? "" : "md:flex-row"
-            } justify-center gap-8 mb-8 w-full`}
-        >
-          {creators.map((creator, index) => (
-            <CreatorCard key={index} creator={creator} darkMode={darkMode} />
-          ))}
+    <section
+      id="ourcreator"
+      style={{ height: '100vh' }}
+      className="flex justify-center items-center" // Centering the entire section
+    >
+      <div className="flex flex-col justify-center items-center"> {/* Centering the content inside this div */}
+        <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
+          Meet Our Creators
+        </h3>
+        <div className="flex flex-col items-center">
+          <div
+            className={`flex flex-col ${isMobile ? "" : "md:flex-row"} justify-center gap-8 w-full`}
+          >
+            {creators.map((creator, index) => (
+              <CreatorCard key={index} creator={creator} darkMode={darkMode} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 
 function CreatorCard({ creator, darkMode }) {
