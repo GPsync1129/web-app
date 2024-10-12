@@ -65,7 +65,7 @@ export default function Home() {
           image: "/shree.png",
           socials: {
             linkedin: "https://www.linkedin.com/in/shreekant-sureliya-69aaa3125/",
-            github: "https://www.linkedin.com/in/om-chaudhari-38960721b/",
+            github: "https://gitlab.com/shreekant_sureliya",
           },
         },
       ];
