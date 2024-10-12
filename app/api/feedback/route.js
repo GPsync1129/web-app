@@ -47,7 +47,7 @@ export async function GET() {
     // Sort by date (oldest first) and limit the results to 7
     const feedbacks = await collection.find({})
       .sort({ date: 1 }) // Sort by date in ascending order (oldest first)
-      .limit(7) // Limit the result to the first 7 entries
+      .limit(15) // Limit the result to the first 7 entries
       .toArray();
 
     return new Response(JSON.stringify(feedbacks), {
