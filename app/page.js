@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Script from 'next/script';
 import Head from "next/head";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -110,7 +111,9 @@ export default function Home() {
                 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
                 rel="stylesheet"
               />
-              <script type='text/javascript' src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'/>
+              <Script
+                src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
+              />
             </Head>
     
           {showConfetti && <Confetti />}
