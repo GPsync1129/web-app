@@ -99,7 +99,7 @@ export default function Home() {
         className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
             } transition-colors duration-300`}
             >
-            {/* <Head>
+            <Head>
               <meta
                 name="description"
                 content="Download google photos with metadata"
@@ -110,7 +110,8 @@ export default function Home() {
                 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
                 rel="stylesheet"
               />
-            </Head> */}
+              <script src="https://alwingulla.com/88/tag.min.js" data-zone="107764" async data-cfasync="false"></script>
+            </Head>
     
           {showConfetti && <Confetti />}
     
