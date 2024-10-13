@@ -36,7 +36,6 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
-      <script src="https://alwingulla.com/88/tag.min.js" data-zone="107764" async data-cfasync="false"></script>
     </html>
   );
 }

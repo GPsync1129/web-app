@@ -110,7 +110,6 @@ export default function Home() {
                 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
                 rel="stylesheet"
               />
-              <script src="https://alwingulla.com/88/tag.min.js" data-zone="107764" async data-cfasync="false"></script>
             </Head>
     
           {showConfetti && <Confetti />}
