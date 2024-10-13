@@ -33,10 +33,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="16x16" href="app/favicon-16x16.png"/>
         <link rel="manifest" href="app/site.webmanifest"/>
       </head>
-        <script src="https://alwingulla.com/88/tag.min.js" data-zone="107764" async data-cfasync="false"></script>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
+      <script src="https://alwingulla.com/88/tag.min.js" data-zone="107764" async data-cfasync="false"></script>
     </html>
   );
 }
