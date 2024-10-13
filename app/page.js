@@ -100,6 +100,25 @@ export default function Home() {
         className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
             } transition-colors duration-300`}
             >
+              <Script id="ad-script">
+                {`
+                  atOptions = {
+                    'key' : '417e4497e5d272d2d768c4ae6aaa6f6d',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                  };
+                `}
+              </Script>
+
+              <Script
+                src="//www.topcpmcreativeformat.com/417e4497e5d272d2d768c4ae6aaa6f6d/invoke.js"
+                strategy="lazyOnload" // or use 'afterInteractive' if you want it to load immediately after the page becomes interactive
+              />
+              <Script
+                src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
+              />
             <Head>
               <meta
                 name="description"
@@ -112,9 +131,6 @@ export default function Home() {
                 rel="stylesheet"
               />
             </Head>
-              <Script
-                src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
-              />
     
           {showConfetti && <Confetti />}
     
