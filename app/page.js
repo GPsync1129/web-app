@@ -111,10 +111,10 @@ export default function Home() {
                 href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
                 rel="stylesheet"
               />
+            </Head>
               <Script
                 src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
               />
-            </Head>
     
           {showConfetti && <Confetti />}
     
