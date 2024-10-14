@@ -37,9 +37,9 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
-      <Script
+      {/* <Script
         src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
-      />
+      /> */}
       </html>
   );
 }
