@@ -83,15 +83,12 @@ export default function Home() {
         if (os === "windows") {
           fileUrl = "https://www.dropbox.com/scl/fi/jz7rrdzuaxjoejgpyz5ih/gpsync.exe?rlkey=f3dna7jn17z599hg8ndu22poz&st=8ucouqqp&dl=1";
         } else if (os === "linux-deb") {
-          fileUrl = "/gpsync.deb";
+          fileUrl = "https://www.dropbox.com/scl/fi/0qktmzv9ve9gb5lp4p50o/gpsync.deb?rlkey=daknm2may04v9f8fu9a9pobzl&st=utx30o5w&dl=1";
         } else {
           console.error("Unsupported OS selected.");
           return;
         }
       
-        // Inform user about the warning
-        
-        // Initiate the download
         window.location.href = fileUrl;
       };
     
