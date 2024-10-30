@@ -875,16 +875,13 @@ export const copyToClipboard = (text) => {
     .catch(err => console.error('Failed to copy text: ', err));
 };
 
-// Function to show a simple popup
 const showPopup = (message) => {
-  // Create a div element for the popup
   const popup = document.createElement('div');
   popup.innerText = message;
 
-  // Style the popup
   popup.style.position = 'fixed';
-  popup.style.bottom = '20px'; // Position it at the bottom
-  popup.style.right = '20px'; // Position it at the right
+  popup.style.bottom = '20px';
+  popup.style.right = '20px';
   popup.style.backgroundColor = '#4CAF50';
   popup.style.color = 'white';
   popup.style.padding = '10px 20px';
@@ -893,20 +890,16 @@ const showPopup = (message) => {
   popup.style.opacity = '0';
   popup.style.transition = 'opacity 0.5s ease-in-out';
 
-  // Append the popup to the body
   document.body.appendChild(popup);
 
-  // Trigger a reflow to apply the transition
   requestAnimationFrame(() => {
-    popup.style.opacity = '1'; // Fade in
+    popup.style.opacity = '1';
   });
 
-  // Remove the popup after 2 seconds
   setTimeout(() => {
-    popup.style.opacity = '0'; // Fade out
-    // Remove from DOM after fade out completes
+    popup.style.opacity = '0';
     setTimeout(() => {
       document.body.removeChild(popup);
-    }, 500); // Wait for the fade out duration
-  }, 2000);
+    }, 500);
+  }, 1000);
 };

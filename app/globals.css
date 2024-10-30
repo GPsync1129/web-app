@@ -1,3 +1,7 @@
+::selection {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 196, 0);
+}
 @font-face {
     font-family: 'Afacad_Flux';
     src: url('/fonts/Afacad_Flux.woff') format('woff');
