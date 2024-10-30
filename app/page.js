@@ -352,7 +352,16 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5 }}
       >
-      Why choose us? We extract images from Google Photos with all original metadata intact—location, timestamps, and settings—embedded within each image. Albums are automatically organized on your device, mirroring Google Photos, so you can easily enjoy, organize, and share your memories without separate metadata files. Make sure to mail on <pre style={{ display: 'inline' }} onClick={() => copyToClipboard('gpsync.official@gmail.com')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-md`}>gpsync.official@gmail.com</code></pre> for Bug🐛 Report.
+        Why choose us? We extract images from Google Photos with all original metadata intact—location, timestamps, and settings—embedded within each image. Albums are automatically organized on your device, mirroring Google Photos, so you can easily enjoy, organize, and share your memories without separate metadata files. Make sure to mail on <pre style={{ display: 'inline' }}>
+          <code
+            onClick={() => copyToClipboard('gpsync.official@gmail.com')}
+            className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-md`}
+            style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }}
+          >
+            gpsync.official@gmail.com
+          </code>
+        </pre>
+        for Bug🐛 Report.
       </motion.h3>
       <div
         className={`flex ${isMobile ? "flex-col" : "flex-row"
@@ -496,18 +505,18 @@ function InstructionSection({ darkMode }) {
             <ol className="list-decimal space-y-3 text-sm md:text-base">
               <li>First of all, log into your Google account and Google Photos via Firefox.</li>
               <li>After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
-                <pre className="mt-2 cursor-pointer" onClick={() => copyToClipboard('sudo dpkg -i gpsync.deb')}>
-                  <code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
+                <pre className="mt-2">
+                  <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('sudo dpkg -i gpsync.deb')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
                     sudo dpkg -i gpsync.deb
                   </code>
                 </pre>
               </li>
               <li>Launch the application on terminal (ctrl+alt+t) with:
-                <pre className="mt-2" onClick={() => copyToClipboard('gpsync')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
+                <pre className="mt-2"><code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('gpsync')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
               </li>
               <li>Allow GPsync to orchestrate your synchronization seamlessly.</li>
               <li>To uninstall the application, type the command:
-                <pre className="mt-2" onClick={() => copyToClipboard('gpsync-uninstall')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
+                <pre className="mt-2"><code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('gpsync-uninstall')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
               </li>
               <li>For a detailed walkthrough, our video guide awaits:
                 <a href="https://www.youtube.com/watch?v=qtLCkn4H7WY" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
@@ -871,7 +880,7 @@ const showPopup = (message) => {
   // Create a div element for the popup
   const popup = document.createElement('div');
   popup.innerText = message;
-  
+
   // Style the popup
   popup.style.position = 'fixed';
   popup.style.bottom = '20px'; // Position it at the bottom
