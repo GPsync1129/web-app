@@ -352,7 +352,7 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5 }}
       >
-        Why choose us? Unlike Google Photos, we keep all the important metadata from your images, ensuring your memories are preserved in detail. Plus, you can easily download entire albums at once, making it simple to enjoy and share your cherished moments. We focus on providing a more user-friendly way to protect your visual stories.
+      Why choose us? We extract images from Google Photos with all original metadata intact—location, timestamps, and settings—embedded within each image. Albums are automatically organized on your device, mirroring Google Photos, so you can easily enjoy, organize, and share your memories without separate metadata files. Make sure to mail on <pre style={{ display: 'inline' }} onClick={() => copyToClipboard('gpsync.official@gmail.com')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-md`}>gpsync.official@gmail.com</code></pre> for Bug🐛 Report.
       </motion.h3>
       <div
         className={`flex ${isMobile ? "flex-col" : "flex-row"
@@ -496,14 +496,18 @@ function InstructionSection({ darkMode }) {
             <ol className="list-decimal space-y-3 text-sm md:text-base">
               <li>First of all, log into your Google account and Google Photos via Firefox.</li>
               <li>After acquiring the gpsync.deb file, execute this command to install gpsync to your machine:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>sudo dpkg -i gpsync.deb</code></pre>
+                <pre className="mt-2 cursor-pointer" onClick={() => copyToClipboard('sudo dpkg -i gpsync.deb')}>
+                  <code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
+                    sudo dpkg -i gpsync.deb
+                  </code>
+                </pre>
               </li>
               <li>Launch the application on terminal (ctrl+alt+t) with:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
+                <pre className="mt-2" onClick={() => copyToClipboard('gpsync')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
               </li>
               <li>Allow GPsync to orchestrate your synchronization seamlessly.</li>
               <li>To uninstall the application, type the command:
-                <pre className="mt-2"><code className={`${darkMode ? "bg-gray-700" : "bg-gray-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
+                <pre className="mt-2" onClick={() => copyToClipboard('gpsync-uninstall')}><code className={`${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync-uninstall</code></pre>
               </li>
               <li>For a detailed walkthrough, our video guide awaits:
                 <a href="https://www.youtube.com/watch?v=qtLCkn4H7WY" target="_blank" rel="noopener noreferrer" className="block mt-2 text-blue-500 hover:text-blue-600 transition-colors">
@@ -853,3 +857,47 @@ export function FeedbackForm({ darkMode }) {
   );
 }
 
+export const copyToClipboard = (text) => {
+  return navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log('Text copied to clipboard');
+      showPopup("Copied to Clipboard!");
+    })
+    .catch(err => console.error('Failed to copy text: ', err));
+};
+
+// Function to show a simple popup
+const showPopup = (message) => {
+  // Create a div element for the popup
+  const popup = document.createElement('div');
+  popup.innerText = message;
+  
+  // Style the popup
+  popup.style.position = 'fixed';
+  popup.style.bottom = '20px'; // Position it at the bottom
+  popup.style.right = '20px'; // Position it at the right
+  popup.style.backgroundColor = '#4CAF50';
+  popup.style.color = 'white';
+  popup.style.padding = '10px 20px';
+  popup.style.borderRadius = '5px';
+  popup.style.zIndex = '1000';
+  popup.style.opacity = '0';
+  popup.style.transition = 'opacity 0.5s ease-in-out';
+
+  // Append the popup to the body
+  document.body.appendChild(popup);
+
+  // Trigger a reflow to apply the transition
+  requestAnimationFrame(() => {
+    popup.style.opacity = '1'; // Fade in
+  });
+
+  // Remove the popup after 2 seconds
+  setTimeout(() => {
+    popup.style.opacity = '0'; // Fade out
+    // Remove from DOM after fade out completes
+    setTimeout(() => {
+      document.body.removeChild(popup);
+    }, 500); // Wait for the fade out duration
+  }, 2000);
+};
