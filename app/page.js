@@ -335,11 +335,11 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
         <div
           className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'} font-sans`}
           style={{
-            background: 'linear-gradient(to right, #ffffff, #00008b)', // Gradient from white to dark blue
+            background: 'linear-gradient(to right, #00a3ee, #e95420)', // Gradient from white to dark blue
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent', // Make text color transparent
             // fontSize: '150%', // Adjust font size as necessary
-            fontWeight: 'bold', // Make it bold for better visibility
+            fontWeight: 'bolder', // Make it bold for better visibility
           }}
         >
           Capture Moments,<br />Secure Memories.
@@ -852,28 +852,4 @@ export function FeedbackForm({ darkMode }) {
     </section>
   );
 }
-
-
-// Buy me a coffe section 
-
-// function BuyMeCoffeeSection({ darkMode }) {
-//   return (
-//     <section className="my-20 h-[90vh] content-center" id="donate">
-//       <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
-//         Buy Me a Coffee
-//       </h3>
-//       <div className="flex justify-center">
-//         <a
-//           href="https://www.buymeacoffee.com/username"
-//           className={`p-4 rounded-lg ${
-//             darkMode ? "bg-blue-600" : "bg-yellow-500"
-//           } text-white transition-colors hover:bg-opacity-80`}
-//         >
-//           Support the Project
-//         </a>
-//       </div>
-//     </section>
-//   );
-// }
-
 
