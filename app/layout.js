@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
             __html: `
               /* Custom text selection color */
               ::selection {
-                background-color: #b3e5fc; /* light blue */
+                background-color: rgb(255, 196, 0); /* light blue */
                 color: #000; /* black text */
               }
             `
