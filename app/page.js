@@ -360,8 +360,7 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
           >
             gpsync.official@gmail.com
           </code>
-        </pre>
-        for Bug🐛 Report.
+        </pre> for Bug Report.
       </motion.h3>
       <div
         className={`flex ${isMobile ? "flex-col" : "flex-row"
