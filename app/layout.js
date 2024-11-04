@@ -48,10 +48,47 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
         {children}
-      </body>
+      
+      <Script
+        src="//pl24684711.profitablecpmrate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js"
+        strategy="afterInteractive"
+      />
+      <Script id="custom-script" strategy="afterInteractive">
+        {`
+          atOptions = {
+            'key': '417e4497e5d272d2d768c4ae6aaa6f6d',
+            'format': 'iframe',
+            'height': 90,
+            'width': 728,
+            'params': {}
+          };
+        `}
+      </Script>
+      <Script
+        src="//www.highperformanceformat.com/417e4497e5d272d2d768c4ae6aaa6f6d/invoke.js"
+        strategy="afterInteractive"
+      />
+      <Script id="ad-config" strategy="afterInteractive">
+        {`
+          atOptions = {
+            'key': 'aa5ae8f7eb9e9549c3b572818338d5cb',
+            'format': 'iframe',
+            'height': 600,
+            'width': 160,
+            'params': {}
+          };
+        `}
+      </Script>
+
+      {/* Load external script */}
+      <Script
+        src="//www.highperformanceformat.com/aa5ae8f7eb9e9549c3b572818338d5cb/invoke.js"
+        strategy="afterInteractive"
+      />
       {/* <Script
         src='//pl24684711.cpmrevenuegate.com/eb/1c/73/eb1c733ca44c609854f1b897dcc29281.js'
       /> */}
+      </body>
     </html>
   );
 }
