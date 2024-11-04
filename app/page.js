@@ -151,42 +151,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* <motion.h1
-              className="text-3xl md:text-5xl font-bold text-center font-Afacad_Flux bg-clip-text text-transparent bg-gradient-to-r"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            >
-              <div className={`md:mt-48 ${darkMode ? 'text-white' : 'text-black'}`}>
-                <Typewriter
-                  words={["Capture Moments, Secure Memories."]}
-                  loop={1}
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1000}
-                />
-              </div>
-            </motion.h1> */}
-
-            {/* <motion.h2
-                  className="text-xl md:text-2xl text-center mb-8 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-500"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                >
-                  Capture Moments, Secure Memories
-                </motion.h2> */}
-
-            {/* <motion.h3
-              className={`text-xxl md:text-xl lg:text-2xl text-center mt-4 mb-8 font-poppins ${darkMode ? 'text-gray-100' : 'text-gray-700'
-                } text-justify md:text-center`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0, duration: 0.5 }}
-            >
-              Why choose us? Unlike Google Photos, we keep all the important metadata from your images, ensuring your memories are preserved in detail. Plus, you can easily download entire albums at once, making it simple to enjoy and share your cherished moments. We focus on providing a more user-friendly way to protect your visual stories.
-            </motion.h3> */}
-
             <DownloadSection
               handleDownload={handleDownload}
               darkMode={darkMode}
@@ -225,7 +189,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className={`fixed w-full top-0 z-50 ${darkMode ? "bg-gray-800" : "bg-white"} shadow-md`}>
+    <nav className={`fixed w-full top-0 z-50 transition-colors duration-300 ${darkMode ? "bg-gray-800" : "bg-white"} shadow-md`}>
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
           Google Photos Download
@@ -234,30 +198,31 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           <div className="flex items-center">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-3xl focus:outline-none"
+              className="text-3xl focus:outline-none transform transition-transform duration-300"
+              style={{ transform: menuOpen ? "rotate(90deg)" : "rotate(0deg)" }}
             >
               ☰
             </button>
           </div>
         ) : (
           <div className="flex items-center">
-            <a href="https://www.gpsync.online/" className="mx-3">
+            <a href="#" className="mx-3 hover:text-gray-500 focus:bg-transparent active:bg-transparent transition-colors ">
               Home
             </a>
-            <a href="#guide" className="mx-3">
-              Guide
+            <a href="#guide" className="mx-3 hover:text-gray-500 focus:bg-transparent active:bg-transparent transition-colors ">
+              Documentation
             </a>
-            <a href="#ourcreator" className="mx-3">
+            <a href="#ourcreator" className="mx-3 hover:text-gray-500 focus:bg-transparent active:bg-transparent transition-colors ">
               Creators
             </a>
-            <a href="#testimonials" className="mx-3">
+            <a href="#testimonials" className="mx-3 hover:text-gray-500 focus:bg-transparent active:bg-transparent transition-colors ">
               Testimonials
             </a>
-            <a href="#feedback" className="mx-3">
+            <a href="#feedback" className="mx-3 hover:text-gray-500 focus:bg-transparent active:bg-transparent transition-colors ">
               Feedback
             </a>
             <a
-              className="bmc-button inline-flex items-center px-3 py-2 border rounded text-white bg-[#FF813F] border-[#FF813F] hover:bg-[#ff9b66] hover:border-[#ff9b66] transition-colors duration-200 ease-in-out"
+              className="bmc-button inline-flex items-center px-3 py-2 border rounded text-white bg-[#FF813F] border-[#FF813F] hover:bg-[#ff9b66] hover:border-[#ff9b66] focus:bg-transparent active:bg-transparent transition-colors  ease-in-out"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.buymeacoffee.com/">
@@ -274,7 +239,8 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
 
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+              className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md transform transition-transform duration-300"
+              style={{ transform: darkMode ? "rotate(360deg)" : "rotate(0deg)" }}
             >
               <span style={{ fontSize: '1.5rem' }}>
                 {darkMode ? "🌞" : "🌙"}
@@ -284,29 +250,32 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
           </div>
         )}
       </div>
-      {isMobile && menuOpen && (
-        <div className={`${darkMode ? "bg-gray-800" : "bg-white"} py-2`}>
-          <a href="https://www.gpsync.online/" className="block px-6 py-2">
+      {isMobile && (
+        <div
+          className={`${darkMode ? "bg-gray-800" : "bg-white"} transition-all duration-300 ${menuOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0 overflow-hidden"} `}
+        >
+          <a href="https://www.gpsync.online/" className="block px-6 py-2 transition-colors ">
             Home
           </a>
-          <a href="#guide" className="block px-6 py-2">
-            Guide
+          <a href="#guide" className="block px-6 py-2 transition-colors ">
+            Documentation
           </a>
-          <a href="#ourcreator" className="block px-6 py-2">
+          <a href="#ourcreator" className="block px-6 py-2 transition-colors ">
             Creators
           </a>
-          <a href="#testimonials" className="block px-6 py-2">
+          <a href="#testimonials" className="block px-6 py-2 transition-colors ">
             Testimonials
           </a>
-          <a href="#feedback" className="block px-6 py-2">
+          <a href="#feedback" className="block px-6 py-2 transition-colors ">
             Feedback
           </a>
-          <a href="https://www.buymeacoffee.com/" className="block px-6 py-2">
-            Support
+          <a href="https://www.buymeacoffee.com/" className="block px-6 py-2 transition-colors ">
+          <span style={{ color: '#B8860B'}}>Support</span>
           </a>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md"
+            className="ml-4 p-2 rounded-full bg-opacity-20 backdrop-blur-md transform transition-transform duration-300"
+            style={{ transform: darkMode ? "rotate(360deg)" : "rotate(0deg)" }}
           >
             <span style={{ fontSize: '1.5rem' }}>
               {darkMode ? "🌞" : "🌙"}
@@ -318,13 +287,15 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
   );
 }
 
+
+
 // Download Section 
 
 
 function DownloadSection({ handleDownload, darkMode, isMobile }) {
   return (
     <section className="md:h-[100vh]"
-      style={{ height: '90vh' }}>
+      style={{ height: '100vh' }}>
       <motion.h1
         className="text-3xl md:text-5xl font-bold text-center font-sans bg-clip-text text-transparent bg-gradient-to-r"
         initial={{ scale: 0.5, opacity: 0 }}
@@ -347,12 +318,12 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
       </motion.h1>
       <motion.h3
         className={`text-xxl md:text-xl lg:text-2xl text-center mt-4 mb-8 font-poppins ${darkMode ? 'text-gray-100' : 'text-gray-700'
-          } text-justify md:text-center`}
+          } text-justify`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0, duration: 0.5 }}
       >
-        Why choose us? We extract images from Google Photos with all original metadata intact—location, timestamps, and settings—embedded within each image. Albums are automatically organized on your device, mirroring Google Photos, so you can easily enjoy, organize, and share your memories without separate metadata files. Make sure to mail on <pre style={{ display: 'inline' }}>
+        Why choose us? We extract images from Google Photos with all original metadata intact - location, timestamps, and settings-embedded within each image. Albums are automatically organized on your device, mirroring Google Photos, so you can easily enjoy, organize, and share your memories without separate metadata files. Make sure to mail on <pre style={{ display: 'inline' }}>
           <code
             onClick={() => copyToClipboard('gpsync.official@gmail.com')}
             className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-md`}
@@ -381,7 +352,7 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
 
           <motion.button
             className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg w-full md:w-64 ${darkMode ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"
-              } text-white font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg`}
+              } text-white font-semibold transition-all  transform hover:scale-105 hover:shadow-lg`}
             onClick={() => handleDownload("windows")}
           >
             <div className="flex items-center flex-wrap sm:flex-nowrap">
@@ -427,7 +398,7 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
             {/* Linux .deb Button */}
             <motion.button
               className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg w-full md:w-64 ${darkMode ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"
-                } text-white font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg`}
+                } text-white font-semibold transition-all  transform hover:scale-105 hover:shadow-lg`}
               onClick={() => handleDownload("windows")}
             >
               <div className="flex items-center flex-wrap sm:flex-nowrap">
@@ -671,10 +642,9 @@ function StarRating({ rating, setRating, isInteractive = true }) {
 
 export function TestimonialSection({ darkMode }) {
   const [testimonials, setTestimonials] = useState([]);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
-    // Fetch testimonials from the API
+    // Fetch random testimonials from the API
     async function fetchTestimonials() {
       try {
         const response = await fetch('/api/feedback');
@@ -688,52 +658,35 @@ export function TestimonialSection({ darkMode }) {
     fetchTestimonials();
   }, []);
 
-  // Function to cycle through testimonials
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Change testimonial every 5 seconds
-
-    return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, [testimonials]);
-
-  // if (testimonials.length === 0) {
-  //   return <p>Loading testimonials...</p>; // Display loading while fetching data
-  // }
-
   return (
     <section
       id="testimonials"
       className="mt-6 border-gray-500 md:border-0 pt-12 md:my-20 content-center"
-
       style={{ height: '100vh' }}
     >
       <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-playfair">
         What Our Users Say
       </h3>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentTestimonial}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.3 }}
-          className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
-        >
-          <div className="flex justify-between items-start mb-4">
-            <h4 className="font-semibold font-poppins">
-              {testimonials[currentTestimonial]?.name}
-            </h4>
-            <StarRating
-              rating={testimonials[currentTestimonial]?.rating}
-              isInteractive={false}
-            />
+      <div className="space-y-6">
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={index}
+            className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h4 className="font-semibold font-poppins">{testimonial.name}</h4>
+              <StarRating rating={testimonial.rating} isInteractive={false} />
+            </div>
+            <p className={`font-poppins ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              {testimonial.message}
+            </p>
           </div>
-          <p className={`font-poppins ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            {testimonials[currentTestimonial]?.message}
-          </p>
-        </motion.div>
-      </AnimatePresence>
+        ))}
+        {/* Show ellipsis if there are more than 4 testimonials */}
+        {testimonials.length > 4 && (
+          <div className="text-center text-gray-500 text-2xl font-bold">. . .</div>
+        )}
+      </div>
     </section>
   );
 }

@@ -44,11 +44,8 @@ export async function GET() {
     const db = client.db('yourDatabaseName');
     const collection = db.collection('feedback');
 
-    // Sort by date (oldest first) and limit the results to 7
-    const feedbacks = await collection.find({})
-      .sort({ date: 1 }) // Sort by date in ascending order (oldest first)
-      .limit(10) // Limit the result to the first 7 entries
-      .toArray();
+    // Use aggregation with $sample to fetch 4 random testimonials
+    const feedbacks = await collection.aggregate([{ $sample: { size: 3 } }]).toArray();
 
     return new Response(JSON.stringify(feedbacks), {
       status: 200,
