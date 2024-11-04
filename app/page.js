@@ -254,7 +254,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
         <div
           className={`${darkMode ? "bg-gray-800" : "bg-white"} transition-all duration-300 ${menuOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0 overflow-hidden"} `}
         >
-          <a href="https://www.gpsync.online/" className="block px-6 py-2 transition-colors ">
+          <a href="#" className="block px-6 py-2 transition-colors ">
             Home
           </a>
           <a href="#guide" className="block px-6 py-2 transition-colors ">
