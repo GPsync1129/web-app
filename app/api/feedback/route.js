@@ -44,10 +44,18 @@ export async function GET() {
     const db = client.db('yourDatabaseName');
     const collection = db.collection('feedback');
 
-    // Use aggregation with $sample to fetch 4 random testimonials
+    // Calculate the average rating across all feedback documents
+    const [averageRatingResult] = await collection.aggregate([
+        { $group: { _id: null, averageRating: { $avg: "$rating" } } }
+      ]).toArray();
+      
+    const averageRating = averageRatingResult?.averageRating || 0;
+
+    // Retrieve a sample of 3 feedback documents
     const feedbacks = await collection.aggregate([{ $sample: { size: 3 } }]).toArray();
 
-    return new Response(JSON.stringify(feedbacks), {
+    // Return both the sampled feedbacks and the average rating
+    return new Response(JSON.stringify({ averageRating, feedbacks }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -60,3 +68,4 @@ export async function GET() {
     await client.close();
   }
 }
+
