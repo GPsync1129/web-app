@@ -32,6 +32,34 @@ export async function POST(req) {
 // gpsyncofficial
 // 2HGtFqHDVucTz7H2
 
+// export async function GET() {
+//   if (!uri) {
+//     return new Response('Missing MongoDB URI', { status: 500 });
+//   }
+
+//   const client = new MongoClient(uri);
+
+//   try {
+//     await client.connect();
+//     const db = client.db('yourDatabaseName');
+//     const collection = db.collection('feedback');
+    
+//     const feedbacks = await collection.aggregate([{ $sample: { size: 3 } }]).toArray();
+
+//     return new Response(JSON.stringify(feedbacks), {
+//       status: 200,
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//   } catch (error) {
+//     console.error("MongoDB connection error:", error);
+//     return new Response('Failed to retrieve feedback.', { status: 500 });
+//   } finally {
+//     await client.close();
+//   }
+// }
+
 export async function GET() {
   if (!uri) {
     return new Response('Missing MongoDB URI', { status: 500 });
@@ -45,23 +73,18 @@ export async function GET() {
     const collection = db.collection('feedback');
 
     // Calculate the average rating across all feedback documents
-    // const [averageRatingResult] = await collection.aggregate([
-    //     { $group: { _id: null, averageRating: { $avg: "$rating" } } }
-    //   ]).toArray();
-
-    // const averageRating = averageRatingResult?.averageRating || 0;
+    const [averageRatingResult] = await collection
+      .aggregate([
+        { $group: { _id: null, averageRating: { $avg: "$rating" } } }
+      ])
+      .toArray();
+    const averageRating = averageRatingResult?.averageRating || 0;
 
     // Retrieve a sample of 3 feedback documents
     const feedbacks = await collection.aggregate([{ $sample: { size: 3 } }]).toArray();
 
     // Return both the sampled feedbacks and the average rating
-    // return new Response(JSON.stringify({ averageRating, feedbacks }), {
-    //   status: 200,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-    return new Response(JSON.stringify({ feedbacks }), {
+    return new Response(JSON.stringify({ averageRating, feedbacks }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -74,4 +97,3 @@ export async function GET() {
     await client.close();
   }
 }
-
