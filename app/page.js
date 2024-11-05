@@ -213,7 +213,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
           GPSYNC
           ({averageRating !== null && (
-            <span className="ml-1">
+            <span>
               {averageRating.toFixed(1)}
               <span className="ml-1">⭐</span>
             </span>
@@ -711,6 +711,12 @@ export function TestimonialSection({ darkMode }) {
         {testimonials.length > 4 && (
           <div className="text-center text-gray-500 text-2xl font-bold">. . .</div>
         )}
+        <div className="flex flex-col justify-center items-center mt-2 text-2xl text-gray-400">
+          <span>●</span>
+          <span>●</span>
+          <span>●</span>
+        </div>
+
       </div>
     </section>
   );
