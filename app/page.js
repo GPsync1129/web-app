@@ -212,16 +212,12 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
           Google Photos Downloading
-          (<span className="ml-2 flex items-center text-yellow-500">
-            {averageRating !== null ? (
-              <>
-                {averageRating.toFixed(1)}
-                <span className="ml-1">⭐</span>
-              </>
-            ) : (
-              <span></span> // Show loading text while fetching
-            )}
-          </span>)
+          {averageRating !== null && (
+            <span className="ml-2 text-yellow-500 flex items-center">
+              {averageRating.toFixed(1)}
+              <StarRating rating={1} isInteractive={false} />
+            </span>
+          )}
         </a>
         {isMobile ? (
           <div className="flex items-center">
@@ -299,7 +295,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
             Feedback
           </a>
           <a href="https://www.buymeacoffee.com/" className="block px-6 py-2 transition-colors ">
-          <span style={{ color: '#B8860B'}}>Support</span>
+            <span style={{ color: '#B8860B' }}>Support</span>
           </a>
           <button
             onClick={() => setDarkMode(!darkMode)}
