@@ -35,15 +35,15 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" sizes="16x16" href="app/favicon-16x16.png" />
         <link rel="manifest" href="app/site.webmanifest" />
         <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              /* Custom text selection color */
-              ::selection {
-                background-color: rgb(255, 196, 0); /* light blue */
-                color: #000; /* black text */
-              }
-            `
-          }}
+          // dangerouslySetInnerHTML={{
+          //   __html: `
+          //     /* Custom text selection color */
+          //     ::selection {
+          //       background-color: rgb(255, 196, 0); /* light blue */
+          //       color: #000; /* black text */
+          //     }
+          //   `
+          // }}
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
