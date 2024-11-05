@@ -187,32 +187,32 @@ export default function Home() {
 
 function Navbar({ darkMode, setDarkMode, isMobile }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [averageRating, setAverageRating] = useState(null);
+  // const [averageRating, setAverageRating] = useState(null);
 
-  useEffect(() => {
-    // Fetch the average rating when the component mounts
-    async function fetchAverageRating() {
-      try {
-        const response = await fetch('/api/feedback'); // Replace with your actual endpoint
-        if (response.ok) {
-          const data = await response.json();
-          setAverageRating(data.averageRating);
-        } else {
-          console.error("Failed to fetch average rating");
-        }
-      } catch (error) {
-        console.error("Error fetching average rating:", error);
-      }
-    }
+  // useEffect(() => {
+  //   // Fetch the average rating when the component mounts
+  //   async function fetchAverageRating() {
+  //     try {
+  //       const response = await fetch('/api/feedback'); // Replace with your actual endpoint
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setAverageRating(data.averageRating);
+  //       } else {
+  //         console.error("Failed to fetch average rating");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching average rating:", error);
+  //     }
+  //   }
 
-    fetchAverageRating();
-  }, []);
+  //   fetchAverageRating();
+  // }, []);
   return (
     <nav className={`fixed w-full top-0 z-50 transition-colors duration-300 ${darkMode ? "bg-gray-800" : "bg-white"} shadow-md`}>
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
           Google Photos Downloading
-          (<span className="ml-2 flex items-center text-yellow-500">
+          {/* (<span className="ml-2 flex items-center text-yellow-500">
             {averageRating !== null ? (
               <>
                 {averageRating.toFixed(1)}
@@ -221,7 +221,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
             ) : (
               <span></span> // Show loading text while fetching
             )}
-          </span>)
+          </span>) */}
         </a>
         {isMobile ? (
           <div className="flex items-center">
