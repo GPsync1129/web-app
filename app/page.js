@@ -211,7 +211,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
     <nav className={`fixed w-full top-0 z-50 transition-colors duration-300 ${darkMode ? "bg-gray-800" : "bg-white"} shadow-md`}>
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
-          Google Photos Downloading
+          GPSYNC
           ({averageRating !== null && (
             <span className="ml-1">
               {averageRating.toFixed(1)}
