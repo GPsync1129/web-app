@@ -213,7 +213,7 @@ function Navbar({ darkMode, setDarkMode, isMobile }) {
         <a href="https://www.gpsync.online/" className="font-bold text-xl">
           Google Photos Downloading
           ({averageRating !== null && (
-            <span className="ml-2 flex items-center">
+            <span className="ml-1">
               {averageRating.toFixed(1)}
               <span className="ml-1">⭐</span>
             </span>
