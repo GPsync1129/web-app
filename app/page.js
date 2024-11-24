@@ -82,7 +82,7 @@ export default function Home() {
 
     if (os === "windows") {
       fileUrl = "https://www.dropbox.com/scl/fi/jz7rrdzuaxjoejgpyz5ih/gpsync.exe?rlkey=f3dna7jn17z599hg8ndu22poz&st=8ucouqqp&dl=1";
-    } else if (os === "linux-deb") {
+    } else if (os === "linux") {
       fileUrl = "https://www.dropbox.com/scl/fi/0qktmzv9ve9gb5lp4p50o/gpsync.deb?rlkey=daknm2may04v9f8fu9a9pobzl&st=utx30o5w&dl=1";
     } else {
       console.error("Unsupported OS selected.");
@@ -424,7 +424,7 @@ function DownloadSection({ handleDownload, darkMode, isMobile }) {
             <motion.button
               className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg w-full md:w-64 ${darkMode ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"
                 } text-white font-semibold transition-all  transform hover:scale-105 hover:shadow-lg`}
-              onClick={() => handleDownload("windows")}
+              onClick={() => handleDownload("linux")}
             >
               <div className="flex items-center flex-wrap sm:flex-nowrap">
                 <svg
