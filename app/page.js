@@ -507,8 +507,7 @@ function InstructionSection({ darkMode }) {
               </pre>
               <pre className="mt-2">
                 <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} className={`cursor-pointer ${darkMode ? "bg-blue-700" : "bg-blue-200"} rounded p-1 font-mono text-sm inline-block`}>
-                  NOTE : Above command is give for python3 only, make sure to install accordingly to your compact version of py.
-                </code>
+                  NOTE : Above command is give for python3 only!!</code>
               </pre>
               <li>After acquiring the gpsync.deb file from web, execute this command to install gpsync to your machine:
                 <pre className="mt-2">
