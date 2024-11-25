@@ -501,6 +501,7 @@ function InstructionSection({ darkMode }) {
               <li>First of all, log into your Google account and Google Photos via Firefox.</li>
               <li>Then make sure to install the venv(Virtual env.) module of python by open the terminal (ctrl+alt+t);</li>
               <pre className="mt-2">
+                python3 - 
                 <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('sudo apt install python3-venv')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
                   sudo apt install python3-venv
                 </code>
