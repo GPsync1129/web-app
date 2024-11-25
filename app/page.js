@@ -506,14 +506,14 @@ function InstructionSection({ darkMode }) {
                   sudo apt install python3-venv
                 </code>
               </pre>
-              <li>After acquiring the gpsync.deb file from web, execute this command to install gpsync to your machine:
+              <li>After acquiring the gpsync.deb file from web and change the directory in the terminal to your gpsync.deb downloaded location, execute this command on terminal to install gpsync to your machine:
                 <pre className="mt-2">
                   <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('sudo dpkg -i gpsync.deb')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
                     sudo dpkg -i gpsync.deb
                   </code>
                 </pre>
               </li>
-              <li>Launch the application on terminal with:
+              <li>Launch the application on terminal with just:
                 <pre className="mt-2"><code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('gpsync')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>gpsync</code></pre>
               </li>
               <li>Allow GPsync to orchestrate your synchronization seamlessly.</li>
