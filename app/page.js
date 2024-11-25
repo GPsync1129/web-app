@@ -501,14 +501,16 @@ function InstructionSection({ darkMode }) {
               <li>First of all, log into your Google account and Google Photos via Firefox.</li>
               <li>Then make sure to install the venv(Virtual env.) module of python by open the terminal (ctrl+alt+t);</li>
               <pre className="mt-2">
-                python3 - 
+                python3:  
                 <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('sudo apt install python3-venv')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
                   sudo apt install python3-venv
                 </code>
               </pre>
               <pre className="mt-2">
-                <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} className={`cursor-pointer ${darkMode ? "bg-blue-700" : "bg-blue-200"} rounded p-1 font-mono text-sm inline-block`}>
-                  NOTE : Above command is give for python3 only!!</code>
+                python2: 
+                <code style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none', MsUserSelect: 'none' }} onClick={() => copyToClipboard('sudo apt install python3-venv')} className={`cursor-pointer ${darkMode ? "bg-yellow-700" : "bg-yellow-200"} rounded p-1 font-mono text-sm inline-block`}>
+                  sudo apt install python2-venv
+                </code>
               </pre>
               <li>After acquiring the gpsync.deb file from web, execute this command to install gpsync to your machine:
                 <pre className="mt-2">
